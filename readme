@@ -1,0 +1,11 @@
+author:wy
+time  :2015-04-19
+aim   :自己编写的工具shell脚本
+
+第一次提交
+1.loginnew.sh login.sh 自动登陆ssh的脚本 不用输入密码
+2.makepy 生成一个带注释的可以执行的py脚本文件
+3.runc 编译运行c文件
+4.record.sh
+  at_expect.sh  用于记录每天的时间，制定计划等
+                现仅完成可以定时每天要计划，到时间出现提示

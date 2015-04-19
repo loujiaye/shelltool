@@ -1,0 +1,12 @@
+#!/bin/sh
+
+name=$1'.py'
+touch $name
+chmod +x $name
+echo "#!/usr/bin/python3">>$name
+echo "## author: wy" >> $name
+echo "## "`date "+%Y-%d-%M"` >> $name
+echo "################" >> $name
+echo "">>$name
+echo "">>$name
+vi $name
