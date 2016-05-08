@@ -1,0 +1,40 @@
+#!/usr/bin/expect
+#exp_internal 1
+
+set relayuser wangyu48
+set relaypass [lindex $argv 0]
+set machine [lindex $argv 1]
+set user [lindex $argv 2]
+set pass [lindex $argv 3]
+
+spawn ssh -l $relayuser relay01.baidu.com
+
+expect {
+    "yes/no" {
+        send "yes\n"
+        exp_continue
+    }
+    "assword:" {
+        send "$relaypass\n"
+    }
+}
+
+expect {
+    "assword:" {
+        interact
+    }
+    "ssl*" {
+        send "ssh ${user}@${machine}\n"
+    }
+}
+
+expect {
+    "assword:" {
+        send "$pass\n"
+        exp_continue
+    }
+    "]*" {
+        interact
+    }
+}
+

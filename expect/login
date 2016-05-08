@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo "请选择需要登陆的机器(默认为1):"
+select machine in `cat machine.conf | cut -f 1 -d' '`;
+do
+break
+done
+
+line="`cat machine.conf | grep ^${machine}`"
+
+user=`echo $line | cut -f 2 -d' '`
+pass=`echo $line | cut -f 3 -d' '`
+
+read -s -p "数据跳板机密码:" relaypass
+
+
+/usr/bin/expect login.exp $relaypass $machine $user $pass
+
+
+
